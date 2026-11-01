@@ -30,7 +30,7 @@ def print_story_confirmation(tekst, mogelijkheden):
 
     while True:
         try:
-            bevestiging = int(input(">>"))
+            bevestiging = int(input(">> "))
             if 1 <= bevestiging < int(mogelijkheden + 1):  # Controleer of het binnen het bereik ligt
                 return int(bevestiging)
             else:

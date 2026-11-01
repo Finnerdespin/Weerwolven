@@ -27,7 +27,7 @@ def print_intro():
     with open("intro.txt", "r") as file:
         intro = file.read()
     print(intro)
-    input("Zijn jullie klaar om te spelen?")
+    input("Zijn jullie klaar om te spelen? ")
 
 def bepaal_aantal_spelers():
     print("Met hoeveel wil je spelen?")
@@ -48,7 +48,7 @@ def bepaal_naam_speler(spelers_lijst):
 
     while True:
         print("Wat is je naam?")
-        naam = input(">>")
+        naam = input(">> ")
         if any(speler.naam == naam for speler in spelers_lijst):
             print(f"Speler {naam} bestaat al.")
         elif naam == "":

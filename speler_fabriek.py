@@ -20,7 +20,7 @@ def voer_dorpeling_uit():
     # Vertel de eindzin
     print_story(dorpelingen_teksten[droom_index]["afsluittekst"])
 
-    input("Druk op ENTER om je beurt te beëindigen >>")
+    input("Druk op ENTER om je beurt te beëindigen.")
 
 
 def voer_weerwolf_uit(player, spel, volgorde):
@@ -49,7 +49,7 @@ def voer_weerwolf_uit(player, spel, volgorde):
     eindzin = eindzin.replace("(WOLF KEUZE)", opties[keuze].naam)
     print_story(eindzin)
 
-    input("Druk op ENTER in om je beurt te beëindigen >>")
+    input("Druk op ENTER in om je beurt te beëindigen.")
 
 def wolven_bekendmaking(player, spel):
     andere_weerwolven = lijst_andere_van_rol("Weerwolf",player, spel)
@@ -155,7 +155,7 @@ def voer_dokter_uit(speler, spel, volgorde):
     eindzin = eindzin.replace("(DOKTER KEUZE)", opties[keuze].naam)
     print_story(eindzin)
 
-    input("Druk op ENTER in om je beurt te beëindigen >>")
+    input("Druk op ENTER in om je beurt te beëindigen.")
 
 def dokter_bekendmaking(speler, spel):
     andere_dokters = lijst_andere_van_rol("Dokter",speler, spel) + lijst_andere_van_rol("Weerwolf-dokter", speler, spel)
@@ -212,7 +212,7 @@ def voer_politie_uit(speler, spel):
     eindzin = eindzin.replace("(POLITIE KEUZE)", opties[keuze].naam)
     print_story(eindzin)
 
-    input("Druk op ENTER in om je beurt te beëindigen >>")
+    input("Druk op ENTER in om je beurt te beëindigen.")
 
 def lijst_andere_van_rol(rol, actieve_speler, spel):
     lijst = []
