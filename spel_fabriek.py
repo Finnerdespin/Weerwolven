@@ -29,7 +29,6 @@ def print_intro():
     print(intro)
     input("Zijn jullie klaar om te spelen?")
 
-
 def bepaal_aantal_spelers():
     print("Met hoeveel wil je spelen?")
     while True:
@@ -57,11 +56,10 @@ def bepaal_naam_speler(spelers_lijst):
         else:
             return naam
 
-
 def maak_spelers_lijst(spel):
     aantal_spelers = bepaal_aantal_spelers()
 
-    spel.rollen_lijst = start_rollen[:aantal_spelers - 1]
+    spel.rollen_lijst = start_rollen[:aantal_spelers]
     random.shuffle(spel.rollen_lijst)
 
     spelers_lijst = []
@@ -80,14 +78,12 @@ def maak_debug_spelers(spel):
 
     return spelers_lijst
 
-
 def iedereen_gespeeld(spelers_lijst):
     for speler in spelers_lijst:
         if not speler.beurt_gespeeld:
             return False
     # Als de loop hier geraakt, heeft iedereen gespeeld
     return True
-
 
 def kies_volgende_speler(spelers_lijst):
     """Kies een willekeurige speler die nog niet heeft gespeeld."""
@@ -169,26 +165,11 @@ def genereer_eind_tekst(spel, winnaars):
                                                                 ", ".join(overlevenden[:-1]) + " en " + overlevenden[-1])
     return eind_tekst
 
-
 def wie_gaat_er_dood(spel):
-    """if not spel.weerwolf_keuzes: # If nobody is dead
-        return
-    counter = Counter(spel.weerwolf_keuzes) # Count the votes
-    max_count = max(counter.values()) # Max values
-    # Who is most chosen?
-    for choice in counter.keys():
-        if counter[choice] != max_count:
-            del spel.weerwolf_keuzes[spel.weerwolf_keuzes.index(choice)]
-            del counter[choice]
-    if len(spel.weerwolf_keuzes) == 1:
-        return spel.weerwolf_keuzes[0]
-    else:
-        return spel.weerwolf_keuzes[len(spel.weerwolf_keuzes) - 1]"""
     keuzes = meeste_stemmen(spel.weerwolf_keuzes)
     for speler in spel.levende_spelers():
         if speler.naam == keuzes[0]:
             return speler
-
 
 def wie_wordt_gered(spel):
     keuzes = meeste_stemmen(spel.weerwolf_keuzes)
@@ -211,21 +192,20 @@ def check_einde_spel(spel):
         print_story(genereer_eind_tekst(spel, "dorpelingen_winnen"))
         return True, "Er zijn nog dorpelingen over."
 
-
-
 def meeste_stemmen(stemmen_dict):
     """Bepaalt wie de meeste stemmen heeft gekregen."""
     if not stemmen_dict:
         return None  # Geen stemmen uitgebracht
-
-    telling = Counter(stemmen_dict.values())  # Tel hoe vaak elke naam voorkomt
+    try:
+        telling = Counter(stemmen_dict.values())  # Tel hoe vaak elke naam voorkomt
+    except: # stemmen_dict is helemaal geen dict
+        telling = Counter(stemmen_dict)
     max_stemmen = max(telling.values())  # Bepaal het hoogste aantal stemmen
 
     # Zoek alle namen die dit aantal stemmen hebben (bij een gelijkspel)
     winnaars = [naam for naam, aantal in telling.items() if aantal == max_stemmen]
 
     return winnaars
-
 
 class Spel:
     def __init__(self, debug):
@@ -242,7 +222,6 @@ class Spel:
         self.dokter_nr = 1
         self.weerwolf_nr = 1
         self.einde_tekst = ""
-
 
     def reset(self):
         self.weerwolf_keuzes = []
@@ -284,7 +263,6 @@ class Spel:
 
         self.reset()
 
-
     def debug_parameters(self):
         for s in self.spelers_lijst:
             if s.rol == "Weerwolf-dokter":
@@ -322,14 +300,3 @@ class Spel:
 
     def geef_speler_bij_naam(self, naam):
         return  next((speler for speler in self.spelers_lijst if speler.naam == naam), None)
-
-
-
-
-
-
-
-
-
-
-
