@@ -1,12 +1,12 @@
-from spel_fabriek import Spel
-from save import slaag_op
+from python.spel_fabriek import Spel
+from python.save import slaag_op
 
-spel = Spel(False)
+spel = Spel(debug=False)
 
 
 def main():
     spel.spel_loop()
-    slaag_op("opslaag_tekst.txt",spel)
+    slaag_op("src/txt/opslaag_tekst.txt",spel)
 
 
 if __name__ == "__main__":

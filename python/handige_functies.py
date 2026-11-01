@@ -5,7 +5,7 @@ WACHT_TIJD = 2
 
 def krijg_teksten():
     # Geef het pad van je JSON-bestand op
-    json_bestand = 'teksten.json'
+    json_bestand = 'src/json/teksten.json'
 
     # Open en laad het JSON-bestand
     try:

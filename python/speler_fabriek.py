@@ -1,5 +1,5 @@
 
-from handige_functies import krijg_teksten, print_story_confirmation, print_story, print_story_pick_from_list
+from python.handige_functies import krijg_teksten, print_story_confirmation, print_story, print_story_pick_from_list
 import random
 from time import sleep
 

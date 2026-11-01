@@ -1,5 +1,5 @@
-from speler_fabriek import Speler
-from handige_functies import clear_console, print_story, krijg_teksten
+from python.speler_fabriek import Speler
+from python.handige_functies import clear_console, print_story, krijg_teksten
 import random
 from collections import Counter
 
@@ -24,7 +24,7 @@ Rollenverdeling:
 """
 
 def print_intro():
-    with open("intro.txt", "r") as file:
+    with open("src/txt/intro.txt", "r") as file:
         intro = file.read()
     print(intro)
     input("Zijn jullie klaar om te spelen? ")
